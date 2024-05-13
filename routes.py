@@ -20,19 +20,12 @@ def intro():
 
 @bp.route('/search', methods=['GET', 'POST'])
 def search():
-    # try:
         if request.method == 'POST':
             db = DatabaseModel('database.db')
             search_query = request.form['query']
             results = db.searchText(search_query)
             return render_template('search.html', results=results, search_query=search_query)
         return render_template('search.html')
-    # except Exception as e:
-    #     return render_template('error.html', error_message=str(e)), 404
-# @bp.route('/<int:food_id>')
-# def details(food_id):
-#     food = FoodInfo.query.get_or_404(food_id)
-#     return render_template('details.html', food=food)
 
 @bp.route('/foodcategories')
 def food_categories():
@@ -43,11 +36,6 @@ def food_categories():
         return render_template('foodcategories.html', foodCategories=foodCategories)
     except Exception as e:
         return render_template('error.html', error_message=str(e)), 404
-
-    # conn = get_db_connection()
-    # foodCategories = conn.execute('SELECT * FROM Food_Category').fetchall()
-    # conn.close()
-    # return render_template('foodcategories.html', foodCategories=foodCategories)
     
 @bp.route('/foodcategories/foods/<int:category_id>')
 def food_by_categories(category_id):
@@ -60,12 +48,6 @@ def food_by_categories(category_id):
     except Exception as e:
         return render_template('error.html', error_message=str(e)), 404
 
-# @app.route('/foodcategories/foods/<int:category_id>')
-# def food_by_categories(category_id):
-#     foods = get_foodList(category_id)
-#     category_name = get_CategoryName(category_id)
-#     return render_template('foods.html', foods=foods, category_name=category_name['name'])
-
 @bp.route('/foodcategories/foods/<int:category_id>/<int:food_id>')
 def fooddetails(category_id,food_id):
     try:
@@ -74,10 +56,6 @@ def fooddetails(category_id,food_id):
         return render_template('fooddetails.html', food=food)
     except Exception as e:
         return render_template('error.html', error_message=str(e)), 404
-# @app.route('/foodcategories/foods/<int:category_id>/<int:food_id>')
-# def fooddetails(category_id,food_id):
-#     food = get_food(food_id)
-#     return render_template('foodDetails.html', food=food)
 
 @bp.route('/commonillness')
 def common_illness():
@@ -105,7 +83,6 @@ def life_stages():
         return render_template('lifestages.html', stages_list = stages_list)
     except Exception as e:
         return render_template('error.html', error_message=str(e)), 404
-
 
 @bp.route('/lifestages/<int:stage_id>')
 def stages_details(stage_id):
