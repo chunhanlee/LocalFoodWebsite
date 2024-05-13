@@ -1,0 +1,13 @@
+__pycache__/
+.vscode/
+Thumbs.db
+*.pyc
+node_modules/
+venv/
+*.env
+env/
+docker-compose.yml
+Dockerfile
+importfile1.py
+importfile2.py
+schema.sql

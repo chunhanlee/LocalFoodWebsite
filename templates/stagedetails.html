@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<hr>
+    <h1>{% block title %} {{ stage['name'] }}{% endblock %}</h1>
+    <p style="white-space-collapse: preserve;">{{ stage['description']}}</p>
+    <p class="h2 text-center">宜忌原則</p><br>
+    <p style="white-space-collapse: preserve;">{{ stage['principles'] }}</p>
+    <p class="h2 text-center">宜食物品</p><br>
+    <p style="white-space-collapse: preserve;">{{ stage['suitable_foods'] }}</p>
+    <p class="h2 text-center">忌食物品</p><br>
+    <p style="white-space-collapse: preserve;">{{ stage['nonsuitable_foods'] }}</p>
+<hr>
+
+{% endblock %}

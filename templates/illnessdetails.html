@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<hr>
+    <h1>{% block title %} {{ illness['name'] }}{% endblock %}</h1>
+    <p style="white-space-collapse: preserve;">{{ illness['description']}}</p>
+    <p class="h2 text-center">宜忌原則</p><br>
+    <p style="white-space-collapse: preserve;">{{ illness['principles'] }}</p>
+    <p class="h2 text-center">宜食物品</p><br>
+    <p style="white-space-collapse: preserve;">{{ illness['suitable_foods'] }}</p>
+    <p class="h2 text-center">忌食物品</p><br>
+    <p style="white-space-collapse: preserve;">{{ illness['nonsuitable_foods'] }}</p>
+<hr>
+
+{% endblock %}

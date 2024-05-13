@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Include JavaScript function to decode Base64 image data -->
+<!-- <script>
+    function decodeBase64Image(encodedData) {
+        var byteString = atob(encodedData);
+        var arrayBuffer = new ArrayBuffer(byteString.length);
+        var uint8Array = new Uint8Array(arrayBuffer);
+        for (var i = 0; i < byteString.length; i++) {
+            uint8Array[i] = byteString.charCodeAt(i);
+        }
+        var blob = new Blob([arrayBuffer], {type: 'image/jpeg'});
+        return URL.createObjectURL(blob);
+    }
+</script> -->
+<hr>
+    <h1>{% block title %} {{ food['name'] }}{% endblock %}</h1>
+        <p>【俗名】{{ food['nickname'] }}</p>
+        <p>【性味】{{ food['taste'] }}</p>
+        <p>【功效】{{ food['efficacy'] }}</p>
+        <p>【宜食】{{ food['suitable_for'] }}</p>
+        <p>【忌食】{{ food['not_suitable_for'] }}</p>
+        <p>【按語】{{ food['note'] }}</p>
+<hr>  
+        <!-- <img id="foodImage" alt="Food Image" style="display: none;">
+        <hr>
+        <script>
+            // Decode Base64 image data and set as src attribute
+            var foodImageData = "{{ food['image'] }}";
+            if (foodImageData){
+                var decodedImageData = decodeBase64Image(foodImageData);
+                document.getElementById('foodImage').src = decodedImageData;
+                document.getElementById('foodImage').style.display = 'block';
+            }
+        </script> -->
+
+{% endblock %}

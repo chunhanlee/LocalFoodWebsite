@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} 春三月飲食宜忌 {% endblock %}</h1>
+<p>春三月是指立春後的正月,驚蟄後的二月,清明後的三月。春季到來,氣溫轉暖，處處生機蓬勃,春意盎然。 《素問•四氣調神大論》云：“春三月，此謂發陳,天地俱生，萬物以榮。”作為萬物之靈的人,也和自然界生物一樣充滿生機，這時，人體各組織器官功能活躍,需要大量的營養物質，供給機體活動和生長發育的需要。</p>
+{% for season in seasons_list %}
+<a href="{{ url_for('food.season_details', season_id=season['id']) }}">
+    <h2>{{ season['name'] }}</h2>
+</a>
+
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,157 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Search {% endblock %}</h1>
+{% if results %}
+<ul class="list-group">
+    {% for result in results %}
+        {% if result.suitable_for %}
+        <li class="list-group-item">
+                <a href="{{ url_for('food.fooddetails', food_id=result['id'], category_id=result['category_id']) }}" class="h2"
+                target="_blank">
+                {{ result.name.replace(search_query, "<span style='background-color: yellow'>" + search_query +
+                        "</span>")|safe }}
+                </a>
+                {% if result.nickname %}
+                <p class="pt-4">【俗名】{{ result.nickname.replace(search_query, "<span style='background-color: yellow'>" + search_query +
+                        "</span>")|safe }}</p>
+                {% endif %}
+                {% if result.efficacy %}
+                <p>【功效】{{ result.efficacy.replace(search_query, "<span style='background-color: yellow'>" + search_query +
+                        "</span>")|safe }}</p>
+                {% endif %}
+                {% if result.suitable_for %}
+                <p>【宜食】{{ result.suitable_for.replace(search_query, "<span style='background-color: yellow'>" + search_query +
+                        "</span>")|safe }}
+                </p>
+                {% endif %}
+                {% if result.not_suitable_for %}
+                <p>【忌食】{{ result.not_suitable_for.replace(search_query, "<span style='background-color: yellow'>" + search_query +
+                        "</span>")|safe }}
+                </p>
+                {% endif %}
+                {% if result.note %}
+                <p>【按語】{{ result.note.replace(search_query, "<span style='background-color: yellow'>" + search_query +
+                        "</span>")|safe }}
+                </p>
+                {% endif %}
+        </li>
+        {% endif %}
+        {% if result.Common_Illness_name %}
+        <li class="list-group-item">
+                <a href="{{ url_for('food.illness_details', illness_id=result['Common_Illness_id']) }}" class="h2"
+                target="_blank">
+                {{ result.Common_Illness_name.replace(search_query, "<span style='background-color: yellow'>" + search_query +
+                        "</span>")|safe }}
+                </a>
+                {% if result.description %}
+                <p style="white-space-collapse: preserve;" class="pt-4">{{ result.description.replace(search_query, "<span style='background-color: yellow'>" + search_query +
+                        "</span>")|safe }}</p>
+                {% endif %}
+                {% if result.principles %}
+                <p class="h2 text-center">宜忌原則</p><br>
+                <p style="white-space-collapse: preserve;" class="pt-4">{{ result.principles.replace(search_query, "<span style='background-color: yellow'>" + search_query +
+                        "</span>")|safe }}</p>
+                {% endif %}
+                {% if result.suitable_foods %}
+                <p class="h2 text-center">宜食物品</p><br>
+                <p style="white-space-collapse: preserve;" class="pt-4">{{ result.suitable_foods.replace(search_query, "<span style='background-color: yellow'>" + search_query +
+                        "</span>")|safe }}</p>
+                {% endif %}
+                {% if result.nonsuitable_foods %}
+                <p class="h2 text-center">忌食物品</p><br>
+                <p style="white-space-collapse: preserve;" class="pt-4">{{ result.nonsuitable_foods.replace(search_query, "<span style='background-color: yellow'>" + search_query +
+                        "</span>")|safe }}</p>
+                {% endif %}
+        </li>
+        {% endif %}
+        {% if result.Life_Stages_name %}
+        <li class="list-group-item">
+                <a href="{{ url_for('food.stages_details', stage_id=result['Life_Stages_id']) }}" class="h2"
+                target="_blank">
+                {{ result.Life_Stages_name.replace(search_query, "<span style='background-color: yellow'>" + search_query +
+                        "</span>")|safe }}
+                </a>
+                {% if result.Life_Stages_description %}
+                <p style="white-space-collapse: preserve;" class="pt-4">{{ result. Life_Stages_description.replace(search_query, "<span style='background-color: yellow'>" + search_query +
+                        "</span>")|safe }}</p>
+                {% endif %}
+                {% if result.Life_Stages_principles %}
+                <p class="h2 text-center">宜忌原則</p><br>
+                <p style="white-space-collapse: preserve;" class="pt-4">{{ result.Life_Stages_principles.replace(search_query, "<span style='background-color: yellow'>" + search_query +
+                        "</span>")|safe }}</p>
+                {% endif %}
+                {% if result.Life_Stages_suitable_foods %}
+                <p class="h2 text-center">宜食物品</p><br>
+                <p style="white-space-collapse: preserve;" class="pt-4">{{ result.Life_Stages_suitable_foods.replace(search_query, "<span style='background-color: yellow'>" + search_query +
+                        "</span>")|safe }}</p>
+                {% endif %}
+                {% if result.Life_Stages_nonsuitable_foods %}
+                <p class="h2 text-center">忌食物品</p><br>
+                <p style="white-space-collapse: preserve;" class="pt-4">{{ result.Life_Stages_nonsuitable_foods.replace(search_query, "<span style='background-color: yellow'>" + search_query +
+                        "</span>")|safe }}</p>
+                {% endif %}
+        </li>
+        {% endif %}
+        {% if result.Deficiency_name %}
+        <li class="list-group-item">
+                <a href="{{ url_for('food.deficiency_details', deficiency_id=result['Deficiency_id']) }}" class="h2"
+                target="_blank">
+                {{ result.Deficiency_name.replace(search_query, "<span style='background-color: yellow'>" + search_query +
+                        "</span>")|safe }}
+                </a>
+                {% if result.Deficiency_description %}
+                <p style="white-space-collapse: preserve;" class="pt-4">{{ result. Deficiency_description.replace(search_query, "<span style='background-color: rgb(206, 206, 104)'>" + search_query +
+                        "</span>")|safe }}</p>
+                {% endif %}
+                {% if result.Deficiency_principles %}
+                <p class="h2 text-center">宜忌原則</p><br>
+                <p style="white-space-collapse: preserve;" class="pt-4">{{ result.Deficiency_principles.replace(search_query, "<span style='background-color: yellow'>" + search_query +
+                        "</span>")|safe }}</p>
+                {% endif %}
+                {% if result.Deficiency_suitable_foods %}
+                <p class="h2 text-center">宜食物品</p><br>
+                <p style="white-space-collapse: preserve;" class="pt-4">{{ result.Deficiency_suitable_foods.replace(search_query, "<span style='background-color: yellow'>" + search_query +
+                        "</span>")|safe }}</p>
+                {% endif %}
+                {% if result.Deficiency_nonsuitable_foods %}
+                <p class="h2 text-center">忌食物品</p><br>
+                <p style="white-space-collapse: preserve;" class="pt-4">{{ result.Deficiency_nonsuitable_foods.replace(search_query, "<span style='background-color: yellow'>" + search_query +
+                        "</span>")|safe }}</p>
+                {% endif %}
+        </li>
+        {% endif %}
+        {% if result.Season_name %}
+        <li class="list-group-item">
+                <a href="{{ url_for('food.season_details', season_id=result['Season_id']) }}" class="h2"
+                target="_blank">
+                {{ result.Season_name.replace(search_query, "<span style='background-color: yellow'>" + search_query +
+                        "</span>")|safe }}
+                </a>
+                {% if result.Season_description %}
+                <p style="white-space-collapse: preserve;" class="pt-4">{{ result. Season_description.replace(search_query, "<span style='background-color: rgb(206, 206, 104)'>" + search_query +
+                        "</span>")|safe }}</p>
+                {% endif %}
+                {% if result.Season_principles %}
+                <p class="h2 text-center">宜忌原則</p><br>
+                <p style="white-space-collapse: preserve;" class="pt-4">{{ result.Season_principles.replace(search_query, "<span style='background-color: yellow'>" + search_query +
+                        "</span>")|safe }}</p>
+                {% endif %}
+                {% if result.Season_suitable_foods %}
+                <p class="h2 text-center">宜食物品</p><br>
+                <p style="white-space-collapse: preserve;" class="pt-4">{{ result.Season_suitable_foods.replace(search_query, "<span style='background-color: yellow'>" + search_query +
+                        "</span>")|safe }}</p>
+                {% endif %}
+                {% if result.Season_nonsuitable_foods %}
+                <p class="h2 text-center">忌食物品</p><br>
+                <p style="white-space-collapse: preserve;" class="pt-4">{{ result.Season_nonsuitable_foods.replace(search_query, "<span style='background-color: yellow'>" + search_query +
+                        "</span>")|safe }}</p>
+                {% endif %}
+        </li>
+        {% endif %}
+    {% endfor %}
+</ul>
+{% else %}
+<p>No results found.</p>
+{% endif %}
+{% endblock %}
