@@ -5,7 +5,8 @@
         "src": "app.py",
         "use": "@vercel/python",
         "config": {
-          "runtime": "python3.10"
+          "runtime": "python3.10",
+          "installCommand": "apt-get update && apt-get install -y libpq-dev"
         }
       }
     ],
