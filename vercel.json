@@ -6,10 +6,7 @@
         "use": "@vercel/python",
         "config": {
           "runtime": "python3.10"
-        },
-        "github_files": [
-            "database.db"
-        ]
+        }
       }
     ],
     "routes": [
