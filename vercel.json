@@ -7,7 +7,6 @@
         "config": {
           "runtime": "python3.10"
         },
-        "command": "flask run -h 0.0.0.0 -p 8080",
         "github_files": [
             "database.db"
         ]
